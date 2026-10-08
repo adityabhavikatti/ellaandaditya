@@ -7,8 +7,27 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="rose" viewBox="0 0 100 100">
+      <path d="M50 92 C46 80 46 70 50 62" stroke="#3d5a3a" stroke-width="3" fill="none"/>
+      <path d="M50 78 C36 80 30 72 32 66 C40 66 46 70 50 78Z" fill="#3f5e3a"/>
+      <path d="M50 78 C64 80 70 72 68 66 C60 66 54 70 50 78Z" fill="#3f5e3a"/>
+      <circle cx="50" cy="42" r="26" fill="#6e1424"/>
+      <path d="M50 22 C66 26 72 40 66 50 C60 60 40 60 34 50 C28 40 34 26 50 22Z" fill="#8b1e2d"/>
+      <path d="M50 30 C58 34 60 44 54 50 C48 56 40 52 40 44 C40 38 44 32 50 30Z" fill="#a8293b"/>
+      <circle cx="50" cy="42" r="6" fill="#5a0e1b"/>
+    </symbol>
+  </svg>
+
   <header id="home">
     <div class="frame">
+      <svg class="rose r1"><use href="#rose"/></svg>
+      <svg class="rose r2"><use href="#rose"/></svg>
+      <svg class="rose r3"><use href="#rose"/></svg>
+      <svg class="rose r4"><use href="#rose"/></svg>
+      <svg class="rose r5"><use href="#rose"/></svg>
+      <svg class="rose r6"><use href="#rose"/></svg>
+
       <p class="eyebrow">Til Death</p>
       <h1>Ella & Aditya</h1>
       <p class="date">[Month Day, Year] &middot; [City, State]</p>
@@ -17,6 +36,8 @@
       <a href="#home">Home</a>
       <a href="#story">Our Story</a>
       <a href="#day">The Day</a>
+      <a href="#photos">Photos</a>
+      <a href="#registry">Registry</a>
       <a href="#rsvp">RSVP</a>
     </nav>
   </header>
@@ -31,6 +52,24 @@
       <h2>The Day</h2>
       <p><strong>Ceremony:</strong> [Time] at [Venue Name], [Address]</p>
       <p><strong>Reception:</strong> [Time] at [Venue Name], [Address]</p>
+    </section>
+
+    <section id="photos">
+      <h2>Photos</h2>
+      <div class="gallery">
+        <img src="photo1.jpg" alt="[Description of photo 1]">
+        <img src="photo2.jpg" alt="[Description of photo 2]">
+        <img src="photo3.jpg" alt="[Description of photo 3]">
+        <img src="photo4.jpg" alt="[Description of photo 4]">
+        <img src="photo5.jpg" alt="[Description of photo 5]">
+        <img src="photo6.jpg" alt="[Description of photo 6]">
+      </div>
+    </section>
+
+    <section id="registry">
+      <h2>Registry</h2>
+      <p>Your presence is the greatest gift. If you wish to give more, you'll find our registry below.</p>
+      <a class="button" href="[Your Registry Link]">View Registry</a>
     </section>
 
     <section id="rsvp">
