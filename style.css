@@ -167,3 +167,35 @@ footer {
   color: var(--muted);
   border-top: 1px solid var(--line);
 }
+
+/* Dogwood parallax layer */
+.petals {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.petal {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  opacity: 0.18;
+  will-change: transform;
+}
+
+.p1 { top: 8%;  left: 4%;   width: 90px;  height: 90px; }
+.p2 { top: 18%; right: 6%;  width: 60px;  height: 60px; }
+.p3 { top: 38%; left: 12%;  width: 110px; height: 110px; }
+.p4 { top: 52%; right: 10%; width: 75px;  height: 75px; }
+.p5 { top: 68%; left: 6%;   width: 55px;  height: 55px; }
+.p6 { top: 78%; right: 4%;  width: 95px;  height: 95px; }
+.p7 { top: 30%; right: 22%; width: 45px;  height: 45px; }
+.p8 { top: 88%; left: 28%;  width: 65px;  height: 65px; }
+
+/* Keep the page content above the petals */
+header, main, footer {
+  position: relative;
+  z-index: 1;
+}
