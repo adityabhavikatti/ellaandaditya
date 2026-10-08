@@ -73,4 +73,64 @@
     <section id="day">
       <h2>The Day</h2>
       <p><strong>Hindu Wedding Ceremony:</strong> Noon at Ponzi Vineyards, 19500 SW Mountain Home Rd, Sherwood, OR 97140</p>
-      <p><strong>Western Wedding Ceremony:</strong> 5
+      <p><strong>Western Wedding Ceremony:</strong> 5 PM at Ponzi Vineyards, 19500 SW Mountain Home Rd, Sherwood, OR 97140</p>
+      <p><strong>Reception:</strong> 6 PM at Ponzi Vineyards, 19500 SW Mountain Home Rd, Sherwood, OR 97140</p>
+    </section>
+
+    <section id="photos">
+      <h2>Photos</h2>
+      <div class="gallery">
+        <img src="photo1.jpg" alt="[Description of photo 1]">
+        <img src="photo2.jpg" alt="[Description of photo 2]">
+        <img src="photo3.jpg" alt="[Description of photo 3]">
+        <img src="photo4.jpg" alt="[Description of photo 4]">
+        <img src="photo5.jpg" alt="[Description of photo 5]">
+        <img src="photo6.jpg" alt="[Description of photo 6]">
+      </div>
+    </section>
+
+    <section id="registry">
+      <h2>Registry</h2>
+      <p>Your presence is the greatest gift. If you wish to give more, you'll find our registry below.</p>
+      <a class="button" href="[Your Registry Link]">View Registry</a>
+    </section>
+
+    <section id="rsvp">
+      <h2>RSVP</h2>
+      <p>Please respond by [Date].</p>
+      <a class="button" href="[Your Google Form link]">RSVP Here</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>We can't wait to celebrate with you!</p>
+  </footer>
+
+  <script>
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const petals = document.querySelectorAll('.petal');
+
+    function updateParallax() {
+      if (prefersReduced) return;
+      const y = window.scrollY;
+      petals.forEach(el => {
+        const speed = parseFloat(el.dataset.speed);
+        el.style.transform = `translate3d(0, ${y * speed}px, 0) rotate(${y * speed * 0.05}deg)`;
+      });
+    }
+
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          updateParallax();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    updateParallax();
+  </script>
+</body>
+</html>
