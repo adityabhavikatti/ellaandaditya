@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Save the Date · Ella & Aditya</title>
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1rem;
+      background: #ebe7e0;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      color: #1c1819;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 1000px;
+      background: #f4efe6;
+      padding: 2.2rem 2.5rem 2rem;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .top, .bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .top { margin-bottom: 1rem; }
+    .bottom { margin-top: 1rem; }
+
+    .strips {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.2rem;
+    }
+
+    .strip {
+      position: relative;
+      aspect-ratio: 3 / 5;
+      background: #111;
+      border: 6px solid #1c1819;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: inset 0 0 0 1px #333;
+    }
+
+    .strip img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(100%) contrast(1.15) brightness(0.95);
+    }
+
+    .strip-label {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .names-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .back {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+    }
+
+    .back a {
+      color: #1c1819;
+    }
+
+    @media (max-width: 700px) {
+      .strips { grid-template-columns: repeat(2, 1fr); }
+      .card { padding: 1.5rem; }
+      .top, .bottom, .names-row { font-size: 0.7rem; }
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="top">
+      <span>Save the Date</span>
+      <span>[03.21.27]</span>
+    </div>
+
+    <div class="strips">
+      <div class="strip"><img src="strip1.jpg" alt="Photo booth photo 1"></div>
+      <div class="strip"><img src="strip2.jpg" alt="Photo booth photo 2"></div>
+      <div class="strip"><img src="strip3.jpg" alt="Photo booth photo 3"></div>
+      <div class="strip"><img src="strip4.jpg" alt="Photo booth photo 4"></div>
+    </div>
+
+    <div class="names-row">
+      <span>Ella and Aditya</span>
+      <span>[Portland, OR]</span>
+    </div>
+  </main>
+
+  <p class="back"><a href="index.html">&larr; Back to the wedding site</a></p>
+</body>
+</html>
