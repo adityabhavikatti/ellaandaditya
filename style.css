@@ -5,8 +5,8 @@
 :root {
   --bg: #A49A87;
   --text: #4A0404;
-  --muted: #b8b0a4;
-  --line: #4a4042;
+  --muted: #7a6f5c;
+  --line: #A49A87;
   --rose: #8b1e2d;
   --rose-bright: #a8293b;
 }
@@ -103,6 +103,7 @@ nav a:hover {
 }
 
 main {
+  color: #252525;
   max-width: 900px;
   margin: 0 auto;
   padding: 1rem 1.5rem 2rem;
@@ -120,12 +121,12 @@ h2 {
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--text);
+  color: inherit;
   margin: 0 0 1rem;
 }
 
 strong {
-  color: var(--text);
+  color: inherit;
   font-weight: 600;
 }
 
