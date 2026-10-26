@@ -18,6 +18,23 @@
       background: #ebe7e0;
       font-family: 'Helvetica Neue', Arial, sans-serif;
       color: #1c1819;
+      overflow-x: hidden;
+    }
+
+    /* Photo booth flash that fades out on load */
+    .flash {
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      pointer-events: none;
+      z-index: 10;
+      animation: flash 1s ease-out forwards;
+    }
+
+    @keyframes flash {
+      0%   { opacity: 0.95; }
+      15%  { opacity: 0.95; }
+      100% { opacity: 0; }
     }
 
     .card {
@@ -28,7 +45,7 @@
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
     }
 
-    .top, .bottom {
+    .top, .bottom, .names-row {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -39,7 +56,6 @@
     }
 
     .top { margin-bottom: 1rem; }
-    .bottom { margin-top: 1rem; }
 
     .strips {
       display: grid;
@@ -55,6 +71,29 @@
       border-radius: 14px;
       overflow: hidden;
       box-shadow: inset 0 0 0 1px #333;
+      opacity: 0;
+      filter: blur(6px);
+      animation: develop 1.2s ease-out forwards;
+    }
+
+    /* Each strip develops one after another */
+    .strip:nth-child(1) { animation-delay: 1.0s; }
+    .strip:nth-child(2) { animation-delay: 1.6s; }
+    .strip:nth-child(3) { animation-delay: 2.2s; }
+    .strip:nth-child(4) { animation-delay: 2.8s; }
+
+    @keyframes develop {
+      0% {
+        opacity: 0;
+        filter: blur(6px) brightness(1.6);
+      }
+      60% {
+        opacity: 1;
+      }
+      100% {
+        opacity: 1;
+        filter: blur(0) brightness(1);
+      }
     }
 
     .strip img {
@@ -65,23 +104,8 @@
       filter: grayscale(100%) contrast(1.15) brightness(0.95);
     }
 
-    .strip-label {
-      text-align: center;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-    }
-
     .names-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       margin-top: 1rem;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
     }
 
     .back {
@@ -97,15 +121,27 @@
     @media (max-width: 700px) {
       .strips { grid-template-columns: repeat(2, 1fr); }
       .card { padding: 1.5rem; }
-      .top, .bottom, .names-row { font-size: 0.7rem; }
+      .top, .names-row { font-size: 0.7rem; }
+    }
+
+    /* Skip the effects for guests who prefer less motion */
+    @media (prefers-reduced-motion: reduce) {
+      .flash { display: none; }
+      .strip {
+        opacity: 1;
+        filter: none;
+        animation: none;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="flash" aria-hidden="true"></div>
+
   <main class="card">
     <div class="top">
       <span>Save the Date</span>
-      <span>[03.21.27]</span>
+      <span>[MM.DD.YY]</span>
     </div>
 
     <div class="strips">
@@ -117,9 +153,10 @@
 
     <div class="names-row">
       <span>Ella and Aditya</span>
-      <span>[Portland, OR]</span>
+      <span>[City, State]</span>
     </div>
   </main>
-  
+
+  <p class="back"><a href="index.html">&larr; Back to the wedding site</a></p>
 </body>
 </html>
