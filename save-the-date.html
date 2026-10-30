@@ -211,6 +211,8 @@
     @media (max-width: 700px) {
       .strips { grid-template-columns: repeat(2, 1fr); }
       .card { padding: 1.5rem; }
+      /* Leave room under the card for the fixed scroll cue */
+      .screen:first-of-type { padding-bottom: 6rem; }
       .top, .names-row { font-size: 0.7rem; }
       .timer { gap: 0.5rem; }
       .unit { min-width: 4.5rem; }
