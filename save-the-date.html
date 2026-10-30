@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <!-- Tints the phone status bar and browser toolbar to match the page -->
+  <meta name="theme-color" content="#A49A87">
   <title>Save the Date · Ella & Aditya</title>
   <!-- Warm up the connection so the Postable page loads faster after the tap -->
   <link rel="preconnect" href="https://www.postable.com">
@@ -11,6 +13,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Gotu&family=Noto+Serif+Devanagari:wdth,wght@62.5..100,100..900&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
+
+    html { background: #A49A87; }
 
     body {
       margin: 0;
@@ -39,6 +43,8 @@
     /* Each section fills the screen on its own */
     .screen {
       min-height: 100vh;
+      /* Visible height on phones, so sections don't slip under the browser toolbar */
+      min-height: 100svh;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -48,7 +54,7 @@
 
     .scroll-cue {
       position: fixed;
-      bottom: 1.2rem;
+      bottom: calc(1.2rem + env(safe-area-inset-bottom));
       left: 50%;
       transform: translateX(-50%);
       display: flex;
@@ -359,6 +365,7 @@
       /* Full-height wrapper keeps the merged panel centered on screen */
       .duo-screen {
         min-height: 100vh;
+        min-height: 100svh;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -415,7 +422,7 @@
       .strips { grid-template-columns: repeat(2, 1fr); }
       .card { padding: 1.5rem; }
       /* Leave room under the card for the fixed scroll cue */
-      .screen:first-of-type { padding-bottom: 6rem; }
+      .screen:first-of-type { padding-bottom: 7.5rem; }
       .top, .names-row { font-size: 0.7rem; }
       .contact h2 { font-size: 1.7rem; }
       .follow .lead { font-size: 1.1rem; }
