@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Ella and Aditya//Save the Date//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:ella-and-aditya-wedding-20270321@adityabhavikatti.github.io
+DTSTAMP:20261030T000000Z
+DTSTART;VALUE=DATE:20270321
+DTEND;VALUE=DATE:20270322
+SUMMARY:Ella and Aditya's Wedding
+LOCATION:Portland\, OR
+DESCRIPTION:Formal invitation to follow.
+URL:https://tinyurl.com/ellaandadi
+END:VEVENT
+END:VCALENDAR
