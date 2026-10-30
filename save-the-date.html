@@ -53,10 +53,6 @@
     }
 
     .scroll-cue {
-      position: fixed;
-      bottom: calc(1.2rem + env(safe-area-inset-bottom));
-      left: 50%;
-      transform: translateX(-50%);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -67,18 +63,19 @@
       text-transform: uppercase;
       text-decoration: none;
       color: #1c1819;
-      transition: opacity 0.4s;
     }
 
-    /* Cue pinned to the bottom of the contact panel instead of the viewport */
+    /* Cue under the card sits in the page flow, so it can never overlap the card */
+    .card + .scroll-cue {
+      margin-top: 1.75rem;
+    }
+
+    /* Cue pinned to the bottom of the contact panel */
     .scroll-cue.inline {
       position: absolute;
       bottom: 1.6rem;
-    }
-
-    .scroll-cue.hidden {
-      opacity: 0;
-      pointer-events: none;
+      left: 50%;
+      transform: translateX(-50%);
     }
 
     .scroll-cue svg {
@@ -421,8 +418,6 @@
     @media (max-width: 700px) {
       .strips { grid-template-columns: repeat(2, 1fr); }
       .card { padding: 1.5rem; }
-      /* Leave room under the card for the fixed scroll cue */
-      .screen:first-of-type { padding-bottom: 7.5rem; }
       .top, .names-row { font-size: 0.7rem; }
       .contact h2 { font-size: 1.7rem; }
       .follow .lead { font-size: 1.1rem; }
@@ -475,12 +470,11 @@
       <span>[Portland, OR]</span>
     </div>
   </main>
+    <a class="scroll-cue" id="scroll-cue" href="#duo-screen" aria-label="Scroll down">
+      <span>Scroll</span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+    </a>
   </section>
-
-  <a class="scroll-cue" id="scroll-cue" href="#duo-screen" aria-label="Scroll down">
-    <span>Scroll</span>
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-  </a>
 
   <div class="duo-screen" id="duo-screen">
   <div class="duo" id="duo">
@@ -542,17 +536,16 @@
     tick();
     setInterval(tick, 1000);
 
+    // Remove the white flash overlay once it has faded. Left in the page, even at
+    // zero opacity, iOS Safari reads it as a white fixed element and tints its bars white.
+    const flash = document.querySelector('.flash');
+    flash.addEventListener('animationend', () => flash.remove());
+
     // Keep the framed sections as tall as the save the date card
     const card = document.querySelector('.card');
     new ResizeObserver(() => {
       document.documentElement.style.setProperty('--card-h', card.offsetHeight + 'px');
     }).observe(card);
-
-    // Hide the scroll cue once the guest has started scrolling
-    const cue = document.getElementById('scroll-cue');
-    window.addEventListener('scroll', () => {
-      cue.classList.toggle('hidden', window.scrollY > 40);
-    }, { passive: true });
 
     // Fade the contact and countdown sections in once they scroll into view
     const fadeObserver = new IntersectionObserver((entries, obs) => {
